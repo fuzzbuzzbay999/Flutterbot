@@ -44,6 +44,7 @@ module.exports = {
 		           
 		       	
 		     //command is layed as -text [message][*][x val][*][y val]
+			       var s =newStr;
 //checks that there is two astrisks and that there is a y value
  if (s.indexOf("*", s.indexOf("*")+1)>0&&s.indexOf("*", s.indexOf("*")+1)+1<s.length()) {
     var X;
@@ -61,7 +62,6 @@ module.exports = {
     //find the y value
     Y=s.substring(firstBreak+s.indexOf("*", firstBreak)+X.length()-1, s.length());
     y=Integer.parseInt(Y);
-
     const picture = gm(request(imageUrl)).fill('#000000').font('Arial', textsizepercent).drawText(x,y, newStr);
   } else {
     const picture = gm(request(imageUrl)).fill('#000000').font('Arial', textsizepercent).drawText(x,y, newStr);
