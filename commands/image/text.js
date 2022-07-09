@@ -45,16 +45,34 @@ module.exports = {
 		       	
 		      		       	
 		       	console.log(args[0]);
-		       
-		   const picture = gm(request(imageUrl)).fill('#000000').font('Arial', textsizepercent).drawText(x,y, newStr);
-		      
-		      	
-		       	for(i = 0; i < newStr.length - 20; i++) 
-		       	{
- 				 y += 25;
- 				 picture.drawText(x, y, newStr);
-				}
+		       //command is layed as -text [message][*][x val][*][y val]
+			//checks that there is two astrisks and that there is a y value
+ 			if (s.indexOf("*", s.indexOf("*")+1)>0&&s.indexOf("*", s.indexOf("*")+1)+1<s.length()) {
+   			var X;
 
+   			var Y;
+
+   			//location of the first break
+    			var firstBreak;
+    			firstBreak = s.indexOf("*");
+    			//seperates the text
+    			newStr=s.substring(0, s.indexOf("*"));
+    			//finds the x value
+    			X=s.substring(s.indexOf("*")+1, s.indexOf("*", firstBreak+1));
+    			x=Integer.parseInt(X);
+    			//find the y value
+    			Y=s.substring(firstBreak+s.indexOf("*", firstBreak)+X.length()-1, s.length());
+    			y=Integer.parseInt(Y);
+
+    			const picture = gm(request(imageUrl)).fill('#000000').font('Arial', textsizepercent).drawText(x,y, newStr);
+  			} else {
+    			const picture = gm(request(imageUrl)).fill('#000000').font('Arial', textsizepercent).drawText(x,y, newStr);
+
+			for(i = 0; i < newStr.length - 20; i++) {
+  			y += 25;
+    			picture.drawText(x, y, newStr);
+    			}
+ 			}	
 		      
 		      
 		      
